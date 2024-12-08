@@ -4,10 +4,15 @@ possible hardware bug in sx1278 chips
  I have encountered a strange phenomenon with SX1278, in particular I am using Arduino Due and the RA01 module inside which there is sx1278.
 
  Pin 10 of Arduino Due connected to NSS of RA01 module
+ 
  Pin 9 connected to RST
+ 
  Pin 2 connected to DIO0
+ 
  Pin 3.3 volt of Arduino Due connected to 3v3 of RA01 module
+ 
  Pin GND connected to GND
+ 
  Pin SCK MISO and MOSI of Arduino Due SPI connector connected to the respective pins on RA01.
 
  I noticed problems with this low sensitivity SX1278 in reception and I investigated a lot.
