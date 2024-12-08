@@ -3,6 +3,8 @@ possible hardware bug in sx1278 chips
 
  I have encountered a strange phenomenon with SX1278, in particular I am using Arduino Due and the RA01 module inside which there is sx1278.
 
+ ![sx1278Bug](images/img01.png "img01.png")
+
  Pin 10 of Arduino Due connected to NSS of RA01 module
  
  Pin 9 connected to RST
