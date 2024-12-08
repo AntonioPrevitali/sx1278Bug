@@ -44,3 +44,72 @@ possible hardware bug in sx1278 chips
  You are invited to verify what I have discovered and to let me know if you also encounter this phenomenon.
 
  Antonio_prev@hotmail.com
+
+ ## Arduino Due Code
+
+```c++
+#include <Arduino.h>
+#include <SPI.h>
+
+uint8_t RegVersion = 0x42;
+
+
+uint8_t spi_readRegister(uint8_t address)
+{
+    uint8_t response;
+    
+    address = address & 0x7F;
+
+    digitalWrite(10, LOW);
+
+    SPI.beginTransaction(SPISettings(8000000, MSBFIRST, SPI_MODE0));
+    SPI.transfer(address);
+    response = SPI.transfer(0x00);
+    SPI.endTransaction();
+
+    digitalWrite(10, HIGH);
+
+    return response;
+}
+
+
+
+void setup() {
+
+  // Begin serial communication
+  Serial.begin(9600);
+  while (!Serial);
+
+  pinMode(10, OUTPUT);
+  digitalWrite(10, HIGH);
+
+  delay(100);    // little delay to wait start module.
+  Serial.println("Start verification module");
+  
+  SPI.begin();
+
+  if (spi_readRegister(RegVersion) == 0x12)
+  {
+      Serial.println("Ok mudule");
+  }
+  else
+  {
+      Serial.println("Error mudule not return 0x12 in RegVersion");
+  }
+
+
+  Serial.println("Now with your rf electronics lab equipment check if the module is transmitting any signals.");
+  Serial.println("Please share with me your observations and conclusions.");
+  Serial.println("Antonio_prev@hotmail.com");
+  Serial.println("https://github.com/AntonioPrevitali/sx1278Bug");
+
+
+}
+
+void loop() {
+  // infinite polling of RegVersion
+  spi_readRegister(RegVersion);
+}
+
+```
+
