@@ -3,6 +3,19 @@ possible hardware bug in sx1278 chips
 
  I have encountered a strange phenomenon with SX1278, in particular I am using Arduino Due and the RA01 module inside which there is sx1278.
 
+------ 09/12/2024 UPDATE -------------------------------------------------------------------------------------------
+Bug is not a bug!
+It's just my inexperience.
+This can still help those who want to use this module with Arduino Due and maybe even with other Arduinos.
+Avoid polling and/or improve the spi connections.
+
+In practice, as you can see from the photo, a piece of cable connected to the SCK of the SPI is enough to generate the noise.
+Noise that greatly reduces the reception capacity of the SX1278.
+
+ ![sx1278Bug](images/img03.png "img03.png")
+
+---------------------------------------------------------------------------------------------------------------------
+
  ![sx1278Bug](images/img01.png "img01.png")
 
  Pin 10 of Arduino Due connected to NSS of RA01 module
