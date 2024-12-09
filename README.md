@@ -3,8 +3,10 @@ possible hardware bug in sx1278 chips
 
  I have encountered a strange phenomenon with SX1278, in particular I am using Arduino Due and the RA01 module inside which there is sx1278.
 
------- 09/12/2024 UPDATE -------------------------------------------------------------------------------------------
-Bug is not a bug!
+-------------------------------------------------------------------------------------------------------------------
+
+09/12/2024 UPDATE  Bug is not a bug!
+
 It's just my inexperience.
 This can still help those who want to use this module with Arduino Due and maybe even with other Arduinos.
 Avoid polling and/or improve the spi connections.
